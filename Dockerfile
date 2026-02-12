@@ -1,5 +1,5 @@
 # Build stage
-FROM eclipse-temurin:25.0.1_8-jdk AS build
+FROM eclipse-temurin:25.0.2_10-jdk AS build
 WORKDIR /app
 
 COPY gradlew gradlew.bat build.gradle settings.gradle ./
@@ -40,7 +40,5 @@ COPY --from=build /custom-jre /opt/java/openjdk
 COPY --from=build /app/build/libs/discovery.jar ./app.jar
 
 EXPOSE 8761
-
-ENV JAVA_TOOL_OPTIONS="-Xms128m -Xmx256m"
 
 ENTRYPOINT ["/opt/java/openjdk/bin/java", "-jar", "app.jar"]
