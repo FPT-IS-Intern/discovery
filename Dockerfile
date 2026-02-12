@@ -39,7 +39,7 @@ WORKDIR /app
 COPY --from=build /custom-jre /opt/java/openjdk
 COPY --from=build /app/build/libs/discovery.jar ./app.jar
 
-EXPOSE 8080
+EXPOSE 8761
 
 ENV JAVA_TOOL_OPTIONS="-Xms128m -Xmx256m"
 
